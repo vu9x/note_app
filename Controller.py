@@ -38,10 +38,12 @@ class Controller:
             case '2':
                 my_notes = self.get_model.Editor_csv.read_file(self.get_model.Editor_csv.get_file_path)
                 self.get_view.print_my_notes(my_notes)
-                return my_notes
+                note_manager()
+                return
 
     def note_manager(self, notes):
         self.get_view.show_note_menu()
+
 
 
 ctr = Controller(Model, View)
