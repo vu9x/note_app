@@ -1,5 +1,6 @@
 import os
 import csv
+import datetime
 
 class Editor_csv:
 
@@ -20,16 +21,32 @@ class Editor_csv:
     def get_file_path(self):
         return self.__file_path
 
+    # @get_file_name.setter
+    # def set_file_name(self, file_name: str):
+    #     self.__file_name = file_name + '.csv'
+    #
+    # @get_file_path.setter
+    # def set_file_path(self):
+    #     self.__file_path = os.path.join(self.get_path, self.get_file_name)
+    #
+    # def abs_path(self, file_name):
+    #     self.set_file_name = file_name
+    #     self.set_file_path
+
     def create_file(self):
+        print(self.get_path)
+        print(self.get_file_name)
+        print(self.get_file_path)
         if not os.path.exists(fr'{self.get_path}'):
             os.mkdir(fr'{self.get_path}')
 
-        with open(fr'{self.get_file_path}','a+') as file:
+        with open(fr'{self.get_file_path}', 'a+') as file:
             print(self.get_file_name, " создан")
 
-    @classmethod
-    def read_file(cls):
-        with open(cls.get_file_path, 'r') as file:
+
+    def read_file(cls, file_path):
+        # with open(cls.get_file_path, 'r') as file:
+        with open(fr'{file_path}', 'r') as file:
             reader = csv.DictReader(file)
             notes = list(reader)
 

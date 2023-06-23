@@ -22,18 +22,26 @@ class Controller:
         self.get_view.show_note_menu()
 
     def file_manager(self):
+        choices = ['1', '2', '3', '4', '5']
         self.show_file_menu()
         choice = self.get_view.user_choice()
-        name = input("Введите название файла: ")
+
+        if choice in choices:
+            name = input("Введите название файла: ")
+            editor = self.get_model.Editor_csv(name)
+        else:
+            print("Вы ввели не существующую команду")
 
         match choice:
             case '1':
-                editor = self.get_model.Editor_csv(name)
                 return editor.create_file()
             case '2':
                 my_notes = self.get_model.Editor_csv.read_file(self.get_model.Editor_csv.get_file_path)
                 self.get_view.print_my_notes(my_notes)
                 return my_notes
+
+    def note_manager(self, notes):
+        self.get_view.show_note_menu()
 
 
 ctr = Controller(Model, View)
