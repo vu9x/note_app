@@ -89,14 +89,3 @@ class Controller:
                         self.get_model.Note.note_list.remove(note)
             elif command == '6':
                 return False
-
-
-ctr = Controller(Model, View)
-
-ctr.hello_world()
-ctr.files_in_directory()
-command = True
-while command is True:
-    command = ctr.file_manager()
-
-print("Вы вышли из программы")
